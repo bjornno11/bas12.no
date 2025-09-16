@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BAS12{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    <!-- Meny -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'landing' %}">Hjem</a></li>
+            <li><a href="{% url 'about' %}">Om BAS12</a></li>
+            <li><a href="{% url 'contact' %}">Kontakt</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/admin/">Admin</a></li>
+                <li><a href="{% url 'logout' %}">Logg ut</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Logg inn</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Hovedinnhold -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+body.landing::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../bas12-watermark-1920x1080.png") no-repeat center center;
+    background-size: cover;
+    opacity: 0.1; /* gjør vannmerket svakt */
+    z-index: -1; /* legg bak innholdet */
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #003366; /* mørk blå bakgrunn */
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}

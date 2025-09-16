@@ -1,0 +1,29 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g_ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1FC1B5" />
+      <stop offset="100%" stop-color="#0A2540" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ring with 12 ticks to symbolize 12 rolling periods -->
+  <g transform="translate(170,200)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="url(#g_ring)" stroke-width="14" />
+    <!-- 12 ticks -->
+    <line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(0)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(30)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(60)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(90)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(120)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(150)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(180)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(210)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(240)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(270)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(300)" /><line x1="0" y1="-150" x2="0" y2="-175" stroke="#0A2540" stroke-width="10" opacity="0.9" transform="rotate(330)" />
+    <!-- subtle inner ring -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#3A5169" stroke-width="6" opacity="0.35" />
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(340,230)">
+    <text x="0" y="0" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+          font-size="140" font-weight="700" fill="#0A2540" letter-spacing="1">
+      bas<tspan fill="#1FC1B5">12</tspan>
+    </text>
+    <text x="4" y="60" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+          font-size="28" fill="#3A5169" opacity="0.9" >
+      12 rullende perioder · smart regnskap
+    </text>
+  </g>
+</svg>
