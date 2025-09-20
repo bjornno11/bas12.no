@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Velkommen til BAS12{% endblock %}
+
+{% block content %}
+  <div style="text-align:center; margin-top:100px;">
+    <h1>Velkommen til BAS12</h1>
+    <p>Vennligst logg inn for å få tilgang.</p>
+    <a href="{% url 'login' %}">
+      <img src="{% static 'bas12-logo1.svg' %}" alt="Logg inn" style="width:200px;margin-top:20px;">
+    </a>
+  </div>
+{% endblock %}

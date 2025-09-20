@@ -1,0 +1,63 @@
+{% load nav_active %}
+
+<nav class="nav">
+  <ul class="nav__bar">
+
+    <li class="nav__item">
+      <a href="{% url 'portal:index' %}" class="nav__link {% active 'portal' %}">Forside</a>
+    </li>
+
+    <li class="nav__item dropdown">
+      <a href="{% url 'ordre:index' %}" class="nav__link {% active 'ordre' %}">Ordre/Faktura</a>
+      <ul class="nav__dropdown">
+        <li><a href="#">Ordreoversikt</a></li>
+        <li><a href="#">Ny ordre</a></li>
+        <li><a href="#">Fakturering</a></li>
+      </ul>
+    </li>
+
+    <li class="nav__item dropdown">
+      <a href="{% url 'innkjop:index' %}" class="nav__link {% active 'innkjop' %}">Innkjøp</a>
+      <ul class="nav__dropdown">
+        <li><a href="#">Innkjøpsoversikt</a></li>
+        <li><a href="#">Ny bestilling</a></li>
+      </ul>
+    </li>
+
+    <li class="nav__item dropdown">
+      <a href="{% url 'lager:index' %}" class="nav__link {% active 'lager' %}">Lager</a>
+      <ul class="nav__dropdown">
+        <li><a href="#">Artikler</a></li>
+        <li><a href="#">Beholdning</a></li>
+      </ul>
+    </li>
+
+    <li class="nav__item">
+      <a href="{% url 'reskontro:index' %}" class="nav__link {% active 'reskontro' %}">Reskontro</a>
+    </li>
+
+    <li class="nav__item">
+      <a href="{% url 'regnskap:index' %}" class="nav__link {% active 'regnskap' %}">Regnskap</a>
+    </li>
+
+    <li class="nav__item">
+      <a href="{% url 'lonn:index' %}" class="nav__link {% active 'lonn' %}">Lønn</a>
+    </li>
+
+    <li class="nav__item">
+      <a href="{% url 'master:index' %}" class="nav__link {% active 'master' %}">Faste data</a>
+    </li>
+
+    <li class="nav__item">
+      <a href="{% url 'system:index' %}" class="nav__link {% active 'system' %}">System</a>
+    </li>
+
+    <li class="nav__item dropdown">
+      <a href="{% url 'master:index' %}" class="nav__link {% active 'master' %}">Faste data</a>
+      <ul class="nav__dropdown">
+        <li><a href="{% url 'ansatte:index' %}">Personale</a></li>
+      </ul>
+   </li>
+
+  </ul>
+</nav>

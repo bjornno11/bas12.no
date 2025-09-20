@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}BAS12{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32.png' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'favicon-48.png' %}">
+
+    <!-- CSS -->
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/watermark.css' %}" rel="stylesheet">
+
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="with-watermark">
+
+    <!-- Navigasjon -->
+    {% include "inc/nav.html" %}
+
+    <!-- Hovedinnhold -->
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+  </body>
+</html>

@@ -40,8 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
     'django.contrib.staticfiles',
-    'portal',
+    "core",
+    "portal",
+    "system",
+    "master",
+    "ordre",
+    "innkjop",
+    "reskontro",
+    "lager",
+    "regnskap",
+    "lonn",
+    "ansatte",
 ]
 
 MIDDLEWARE = [
@@ -58,15 +69,15 @@ ROOT_URLCONF = 'bas12proj.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],   # global templates
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
@@ -127,3 +138,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Etter vellykket login -> send bruker hit
+LOGIN_REDIRECT_URL = "/portal/home/"
+
+# Hvis noen prøver å åpne en @login_required-side uten å være logget inn
+LOGIN_URL = "/accounts/login/"

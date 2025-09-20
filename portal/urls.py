@@ -1,8 +1,9 @@
 from django.urls import path
 from . import views
 
+app_name = "portal"
+
 urlpatterns = [
-    path("", views.landing, name="landing"),        # rot -> landingssiden
-    path("about/", views.about, name="about"),      # eksempel på undersider
-    path("contact/", views.contact, name="contact")
+    path("", views.public_index, name="public_index"),  # åpen side
+    path("home/", views.index, name="index"),           # innlogget side
 ]

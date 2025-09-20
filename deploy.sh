@@ -1,37 +1,24 @@
 #!/bin/bash
-# Deploy script for BAS12
-
-APP_DIR=/srv/bas12
-VENV_DIR=$APP_DIR/venv
-SERVICE=bas12
+set -e
 
 echo "🚀 Starter deploy for BAS12..."
 
-cd $APP_DIR || exit
+# 1. Sjekk kode og templates
+echo "🧪 Kjører checks..."
+source venv/bin/activate
+python manage.py check --deploy
+python manage.py validate_templates
 
-# Aktiver venv
-source $VENV_DIR/bin/activate
-
-# Oppdater dependencies (hvis du bruker requirements.txt)
-if [ -f requirements.txt ]; then
-    echo "📦 Oppdaterer dependencies..."
-    pip install -r requirements.txt
-fi
-
-# Kjør migrasjoner
+# 2. Migrasjoner
 echo "🗄️ Kjører migrasjoner..."
 python manage.py migrate --noinput
 
-# Rydd opp og samle static
-echo "🎨 Rydder staticfiles og samler på nytt..."
-rm -rf $APP_DIR/staticfiles/*
+# 3. Collect static
+echo "🎨 Samler static files..."
 python manage.py collectstatic --noinput
 
-# Restart Gunicorn-service
+# 4. Restart Gunicorn
 echo "🔄 Restarter Gunicorn..."
-sudo systemctl daemon-reload
-sudo systemctl restart $SERVICE
+sudo systemctl restart bas12.service
 
-# Status
-echo "📊 Status på Gunicorn:"
-sudo systemctl status $SERVICE --no-pager -l
+echo "✅ Deploy fullført!"

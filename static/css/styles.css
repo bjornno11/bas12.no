@@ -7,7 +7,7 @@ body.landing::before {
     height: 100%;
     background: url("../bas12-watermark-1920x1080.png") no-repeat center center;
     background-size: cover;
-    opacity: 0.1; /* gjør vannmerket svakt */
+    opacity: 0.5; /* gjør vannmerket svakt */
     z-index: -1; /* legg bak innholdet */
 }
 nav ul {

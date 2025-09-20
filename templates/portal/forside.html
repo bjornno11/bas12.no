@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Forside · BAS12{% endblock %}
+{% block content %}
+  <h1>Velkommen til BAS12</h1>
+  <p>Velg modul fra menyen over.</p>
+
+  <section>
+    <h2>Hurtigvalg</h2>
+    <ul>
+      <li><a href="{% url 'ordre:liste' %}">Se ordre</a></li>
+      <li><a href="{% url 'faktura:liste' %}">Fakturaoversikt</a></li>
+      <li><a href="{% url 'lager:status' %}">Lagerstatus</a></li>
+    </ul>
+  </section>
+{% endblock %}

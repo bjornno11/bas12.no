@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Personale{% endblock %}
+{% block content %}
+  <h1>Personale</h1>
+  <a href="{% url 'personale:registrer' %}">➕ Registrer ny ansatt</a>
+  <ul>
+    {% for ansatt in ansatte %}
+      <li>{{ ansatt.navn }} – {{ ansatt.posisjon }} ({{ ansatt.epost }})</li>
+    {% empty %}
+      <li>Ingen ansatte registrert.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
