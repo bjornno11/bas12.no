@@ -29,7 +29,8 @@ ALLOWED_HOSTS = [
     "bas12.no", 
     "www.bas12.no",
     "46.62.205.45", 
-    "127.0.0.1"
+    "127.0.0.1",
+    'localhost',
 ]
 
 # Application definition
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-
+    'django_extensions',
     'django.contrib.staticfiles',
     "core",
     "portal",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     "regnskap",
     "lonn",
     "ansatte",
+    "kunder",
 ]
 
 MIDDLEWARE = [

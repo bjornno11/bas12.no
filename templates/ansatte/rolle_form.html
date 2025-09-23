@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ tittel }}{% endblock %}
+
+{% block content %}
+  <h1>{{ tittel }}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Lagre</button>
+  </form>
+
+  <p><a href="{% url 'ansatte:rolle_liste' %}">Tilbake til roller</a></p>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Slett kunde{% endblock %}
+
+{% block content %}
+<h1>Slett kunde</h1>
+
+<p>Er du sikker på at du vil slette <strong>{{ kunde.navn }}</strong>?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" style="color:red;">Ja, slett</button>
+  <a href="{% url 'kunder:kunde_liste' %}">Avbryt</a>
+</form>
+{% endblock %}

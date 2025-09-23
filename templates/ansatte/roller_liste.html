@@ -1,0 +1,21 @@
+<h1>Roller</h1>
+<a href="{% url 'ansatte:rolle_ny' %}">Ny rolle</a>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <th>Navn</th>
+    <th>Beskrivelse</th>
+    <th>Aktiv</th>
+    <th>Handlinger</th>
+  </tr>
+  {% for rolle in roller %}
+  <tr>
+    <td>{{ rolle.navn }}</td>
+    <td>{{ rolle.beskrivelse }}</td>
+    <td>{{ rolle.aktiv|yesno:"Ja,Nei" }}</td>
+    <td>
+      <a href="{% url 'ansatte:rolle_endre' rolle.id %}">Endre</a> |
+      <a href="{% url 'ansatte:rolle_slette' rolle.id %}">Slett</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

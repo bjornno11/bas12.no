@@ -1,23 +1,18 @@
+/* === Watermark bakgrunn === */
+
+/* Sørger for at body alltid har stacking context */
 body.with-watermark::before {
-  content: "";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  background: url("/static/bas12-logo1.svg") no-repeat center center;
-  background-size: contain;
-  opacity: 0.15;  /* litt tydeligere */
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 0;
-
-  /* Fargespill – blåtonet watermark */
-  filter: drop-shadow(0 0 10px rgba(0, 80, 200, 0.6))
-          hue-rotate(190deg) saturate(150%);
-}
-
-main {
-  position: relative;
-  z-index: 1;
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: url("/static/bas12-logo1.svg") no-repeat center center;
+    background-size: contain;
+    opacity: 0.15; /* juster synlighet */
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* watermark skal ikke kunne klikkes */
+    z-index: -1; /* viktig: watermark bak alt annet */
+    filter: drop-shadow(0 0 10px rgba(0, 80, 200, 0.6)) hue-rotate(190deg) saturate(150%);
 }

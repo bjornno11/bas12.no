@@ -2,9 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-
-    path("", include(("portal.urls", "portal"), namespace="portal")),  # forside
     path("system/", include(("system.urls", "system"), namespace="system")),
     path("master/", include(("master.urls", "master"), namespace="master")),
     path("ordre/", include(("ordre.urls", "ordre"), namespace="ordre")),
@@ -14,7 +11,12 @@ urlpatterns = [
     path("regnskap/", include(("regnskap.urls", "regnskap"), namespace="regnskap")),
     path("lonn/", include(("lonn.urls", "lonn"), namespace="lonn")),
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),  # 👈 login, logout osv.
-    path("portal/", include("portal.urls", namespace="portal")),
-    path("ansatte/", include("ansatte.urls", namespace="ansatte")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    
+    # Faste data
+    path("ansatte/", include(("ansatte.urls", "ansatte"), namespace="ansatte")),
+    path("kunder/", include(("kunder.urls", "kunder"), namespace="kunder")),
+    
+    # Startside
+    path("", include("portal.urls", namespace="portal")),
 ]

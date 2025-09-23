@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Kunder{% endblock %}
+
+{% block content %}
+<h1>Kundeliste</h1>
+
+<p><a href="{% url 'kunder:kunde_ny' %}">➕ Ny kunde</a></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Navn</th>
+    <th>Telefon</th>
+    <th>E-post</th>
+    <th>Handlinger</th>
+  </tr>
+  {% for kunde in kunder %}
+  <tr>
+    <td>{{ kunde.navn }}</td>
+    <td>{{ kunde.telefon }}</td>
+    <td>{{ kunde.epost }}</td>
+    <td>
+      <a href="{% url 'kunder:kunde_endre' kunde.id %}">✏️ Endre</a> |
+      <a href="{% url 'kunder:kunde_slette' kunde.id %}">🗑️ Slett</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="4">Ingen kunder registrert.</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

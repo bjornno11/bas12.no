@@ -25,3 +25,8 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+/* Sørger for at hovedinnholdet ligger under menyen */
+main {
+  position: relative;
+  z-index: 1;
+}

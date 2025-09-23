@@ -1,42 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
 from django.contrib.auth.models import User
-from .models import Ansatt
-
-
-# ---------- FORM ----------
-class AnsattUserForm(forms.ModelForm):
-    # Felter fra User
-    username = forms.CharField(max_length=150, label="Brukernavn")
-    email = forms.EmailField(required=True, label="E-post")
-    password = forms.CharField(widget=forms.PasswordInput, label="Passord")
-
-    class Meta:
-        model = Ansatt
-        fields = [
-            "username", "email", "password",   # User-felter
-            "roller", "aktiv",
-            "adresse", "telefon",
-            "personnummer", "ansatt_dato", "kjonn",
-        ]
-
-    def save(self, commit=True):
-        # Opprett User først
-        username = self.cleaned_data["username"]
-        email = self.cleaned_data["email"]
-        password = self.cleaned_data["password"]
-
-        user = User.objects.create_user(username=username, email=email, password=password)
-
-        ansatt = super().save(commit=False)
-        ansatt.user = user
-        if commit:
-            ansatt.save()
-            self.save_m2m()
-        return ansatt
+from .models import Ansatt, Rolle
+from .forms import AnsattUserForm, RolleForm
 
 
 # ---------- VIEWS ----------
+
+# Forside for ansatte
+def index(request):
+    ansatte = Ansatt.objects.all()
+    return render(request, "ansatte/index.html", {"ansatte": ansatte})
+
+# Registrere ny ansatt
 def registrer(request):
     if request.method == "POST":
         form = AnsattUserForm(request.POST)
@@ -48,6 +24,40 @@ def registrer(request):
     return render(request, "ansatte/registrer.html", {"form": form})
 
 
-def index(request):
-    ansatte = Ansatt.objects.all()
-    return render(request, "ansatte/index.html", {"ansatte": ansatte})
+# ---------- ROLLER ----------
+
+# Liste alle roller
+def rolle_liste(request):
+    roller = Rolle.objects.all().order_by('navn')
+    return render(request, 'ansatte/roller_liste.html', {'roller': roller})
+
+# Opprette ny rolle
+def rolle_ny(request):
+    if request.method == 'POST':
+        form = RolleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('ansatte:rolle_liste')
+    else:
+        form = RolleForm()
+    return render(request, 'ansatte/rolle_form.html', {'form': form, 'tittel': 'Ny Rolle'})
+
+# Endre eksisterende rolle
+def rolle_endre(request, id):
+    rolle = get_object_or_404(Rolle, id=id)
+    if request.method == 'POST':
+        form = RolleForm(request.POST, instance=rolle)
+        if form.is_valid():
+            form.save()
+            return redirect('ansatte:rolle_liste')
+    else:
+        form = RolleForm(instance=rolle)
+    return render(request, 'ansatte/rolle_form.html', {'form': form, 'tittel': 'Endre Rolle'})
+
+# Slette en rolle
+def rolle_slette(request, id):
+    rolle = get_object_or_404(Rolle, id=id)
+    if request.method == 'POST':
+        rolle.delete()
+        return redirect('ansatte:rolle_liste')
+    return render(request, 'ansatte/rolle_slette.html', {'rolle': rolle})

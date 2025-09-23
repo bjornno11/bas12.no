@@ -6,7 +6,7 @@
   <a href="{% url 'ansatte:registrer' %}">➕ Registrer ny ansatt</a>
   <ul>
     {% for ansatt in ansatte %}
-      <li>{{ ansatt.navn }} – {{ ansatt.posisjon }} ({{ ansatt.epost }})</li>
+      <li>{{ ansatt.user.first_name }} {{ ansatt.user.last_name }} ({{ ansatt.user.username }}) – {{ ansatt.user.email }}</li>
     {% empty %}
       <li>Ingen ansatte registrert.</li>
     {% endfor %}
